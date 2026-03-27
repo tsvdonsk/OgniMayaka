@@ -1,10 +1,11 @@
 import { useLanguage } from '../../i18n'
 import styles from './Sauna.module.scss'
+import { img } from '../../utils/assets'
 
 const imgs = [
-  '/img/sauna1.jpg',
-  '/img/sauna2.jpg',
-  '/img/sauna3.jpg',
+  img('/img/sauna1.jpg'),
+  img('/img/sauna2.jpg'),
+  img('/img/sauna3.jpg'),
 ]
 
 export default function Sauna() {

@@ -1,10 +1,11 @@
 import { useLanguage } from '../../i18n'
 import styles from './Pool.module.scss'
+import { img } from '../../utils/assets'
 
 const imgs = [
-  '/img/bassejn.webp',
-  '/img/pool2.webp',
-  '/img/pool_winter.webp',
+  img('/img/bassejn.webp'),
+  img('/img/pool2.webp'),
+  img('/img/pool_winter.webp'),
 ]
 
 export default function Pool() {

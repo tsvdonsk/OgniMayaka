@@ -7,8 +7,9 @@ import { useLanguage } from '../../i18n'
 import type { Lang } from '../../i18n'
 import AuthModal from '../AuthModal'
 import styles from './Header.module.scss'
+import { img } from '../../utils/assets'
 
-const LOGO_URL = '/img/logo.webp'
+const LOGO_URL = img('/img/logo.webp')
 
 function ThemeToggle() {
   const { theme, isDark, toggle } = useTheme()

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import type { ReactNode } from 'react'
+import { img } from '../utils/assets'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -49,15 +50,15 @@ export type SiteMedia = {
 // ─── Default Data ─────────────────────────────────────────────────────────────
 
 const defaultSiteMedia: SiteMedia = {
-  heroImage: '/img/hero.jpg',
-  heroVideo: '/img/hero.webm',
+  heroImage: img('/img/hero.jpg'),
+  heroVideo: img('/img/hero.webm'),
   galleryImages: [
-    { id: 'g1', type: 'image', url: '/img/room1.webp', caption: 'Номера' },
-    { id: 'g2', type: 'image', url: '/img/bassejn.webp', caption: 'Бассейн' },
-    { id: 'g3', type: 'image', url: '/img/besedki.webp', caption: 'Беседки' },
-    { id: 'g4', type: 'image', url: '/img/iglu.webp', caption: 'Иглу-беседки' },
-    { id: 'g5', type: 'image', url: '/img/sauna1.jpg', caption: 'Сауна' },
-    { id: 'g6', type: 'image', url: '/img/evening1.webp', caption: 'Вечерняя атмосфера' },
+    { id: 'g1', type: 'image', url: img('/img/room1.webp'), caption: 'Номера' },
+    { id: 'g2', type: 'image', url: img('/img/bassejn.webp'), caption: 'Бассейн' },
+    { id: 'g3', type: 'image', url: img('/img/besedki.webp'), caption: 'Беседки' },
+    { id: 'g4', type: 'image', url: img('/img/iglu.webp'), caption: 'Иглу-беседки' },
+    { id: 'g5', type: 'image', url: img('/img/sauna1.jpg'), caption: 'Сауна' },
+    { id: 'g6', type: 'image', url: img('/img/evening1.webp'), caption: 'Вечерняя атмосфера' },
   ],
 }
 
@@ -70,7 +71,7 @@ const defaultNews: NewsItem[] = [
     date: '2026-03-20',
     published: true,
     media: [
-      { id: 'n1m1', type: 'image', url: '/img/pier.jpg', caption: 'Панорама причала' },
+      { id: 'n1m1', type: 'image', url: img('/img/pier.jpg'), caption: 'Панорама причала' },
     ],
   },
   {
@@ -81,8 +82,8 @@ const defaultNews: NewsItem[] = [
     date: '2026-03-15',
     published: true,
     media: [
-      { id: 'n2m1', type: 'image', url: '/img/bassejn.webp', caption: 'Тот самый бассейн' },
-      { id: 'n2m2', type: 'image', url: '/img/pool_winter.webp', caption: 'Бассейн зимой' },
+      { id: 'n2m1', type: 'image', url: img('/img/bassejn.webp'), caption: 'Тот самый бассейн' },
+      { id: 'n2m2', type: 'image', url: img('/img/pool_winter.webp'), caption: 'Бассейн зимой' },
     ],
   },
   {
@@ -160,17 +161,17 @@ const defaultNews: NewsItem[] = [
 ]
 
 const defaultRooms: RoomItem[] = [
-  { id: 'standart', name: 'Стандарт', desc: 'Двухместный номер с видом на реку. Уютный и функциональный.', area: '15 м²', capacity: '2 гостя', bed: '1 кровать 160×200', floor: '2 этаж', img: '/img/standart.jpg', features: ['Вид на реку', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Чайник', 'Фен', 'Wi-Fi'], category: 'Стандарт' },
-  { id: 'standart-twin', name: 'Стандарт ТВИН', desc: 'Двухместный номер с двумя раздельными кроватями и видом на реку.', area: '15 м²', capacity: '2 гостя', bed: '2 × 90×200', floor: '2 этаж', img: '/img/standart-twin.png', features: ['Вид на реку', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Стандарт' },
-  { id: 'standart-plus', name: 'Стандарт +', desc: 'Просторный стандарт с видом на реку и собственной террасой.', area: '23 м²', capacity: '2 гостя', bed: '1 кровать 160×200', floor: '2 этаж', img: '/img/standart-plus.jpg', features: ['Вид на реку', 'Терраса', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Стандарт' },
-  { id: 'lux', name: 'Люкс', desc: 'Двухкомнатный люкс с видом на реку, собственной террасой и отдельным входом.', area: '45 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + диван', floor: '1 и 2 этаж', img: '/img/lux.png', features: ['Вид на реку', 'Отдельный вход', 'Терраса', 'Душ', 'Smart TV', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Люкс' },
-  { id: 'apartament', name: 'Apartament', desc: 'Апартамент с мини-кухней в корпусе 3.', area: '36 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + угловой диван', floor: 'Корпус 3, 2 этаж, №21', img: '/img/apartament.jpg', features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
-  { id: 'apartament-plus', name: 'Apartament +', desc: 'Улучшенный апартамент с большей площадью.', area: '39 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + диван', floor: 'Корпус 3, 2 этаж, №22', img: '/img/apartament-plus.jpg', features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
-  { id: 'apartament-senior', name: 'Apartament Senior', desc: 'Самый просторный апартамент.', area: '48 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + большой диван', floor: 'Корпус 3, 2 этаж, №23', img: '/img/apartament-senior.jpg', features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
-  { id: 'studio-301', name: 'Studio 301', desc: 'Студия с кухней и террасой. Панорамный вид.', area: '34 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: '/img/studio-301.jpg', features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Набор посуды', 'Wi-Fi'], category: 'Студии' },
-  { id: 'studio-302', name: 'Studio 302', desc: 'Студия с кухней и террасой для романтического отдыха вдвоём.', area: '26 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: '/img/studio-302.jpg', features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Wi-Fi'], category: 'Студии' },
-  { id: 'studio-303', name: 'Studio 303', desc: 'Компактная студия с кухней и выходом на террасу.', area: '20 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: '/img/studio-303.jpg', features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Wi-Fi'], category: 'Студии' },
-  { id: 'aframe', name: 'А-Фрейм 100 м²', desc: 'Двухэтажный дом с панорамным остеклением, 3 спальнями, гостиной, кухней и мангальной зоной.', area: '100 м²', capacity: '8 гостей', bed: '3 спальни + гостиная', floor: 'Отдельный дом', img: '/img/aframe.webp', features: ['Панорамные окна', 'Мангальная зона', 'Полная кухня', 'Smart TV', 'Сплит-система', 'Терраса', 'Wi-Fi'], category: 'A-Frame', highlight: true },
+  { id: 'standart', name: 'Стандарт', desc: 'Двухместный номер с видом на реку. Уютный и функциональный.', area: '15 м²', capacity: '2 гостя', bed: '1 кровать 160×200', floor: '2 этаж', img: img('/img/standart.jpg'), features: ['Вид на реку', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Чайник', 'Фен', 'Wi-Fi'], category: 'Стандарт' },
+  { id: 'standart-twin', name: 'Стандарт ТВИН', desc: 'Двухместный номер с двумя раздельными кроватями и видом на реку.', area: '15 м²', capacity: '2 гостя', bed: '2 × 90×200', floor: '2 этаж', img: img('/img/standart-twin.png'), features: ['Вид на реку', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Стандарт' },
+  { id: 'standart-plus', name: 'Стандарт +', desc: 'Просторный стандарт с видом на реку и собственной террасой.', area: '23 м²', capacity: '2 гостя', bed: '1 кровать 160×200', floor: '2 этаж', img: img('/img/standart-plus.jpg'), features: ['Вид на реку', 'Терраса', 'Душ', 'ТВ', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Стандарт' },
+  { id: 'lux', name: 'Люкс', desc: 'Двухкомнатный люкс с видом на реку, собственной террасой и отдельным входом.', area: '45 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + диван', floor: '1 и 2 этаж', img: img('/img/lux.png'), features: ['Вид на реку', 'Отдельный вход', 'Терраса', 'Душ', 'Smart TV', 'Сплит-система', 'Холодильник', 'Wi-Fi'], category: 'Люкс' },
+  { id: 'apartament', name: 'Apartament', desc: 'Апартамент с мини-кухней в корпусе 3.', area: '36 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + угловой диван', floor: 'Корпус 3, 2 этаж, №21', img: img('/img/apartament.jpg'), features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
+  { id: 'apartament-plus', name: 'Apartament +', desc: 'Улучшенный апартамент с большей площадью.', area: '39 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + диван', floor: 'Корпус 3, 2 этаж, №22', img: img('/img/apartament-plus.jpg'), features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
+  { id: 'apartament-senior', name: 'Apartament Senior', desc: 'Самый просторный апартамент.', area: '48 м²', capacity: '4 гостя', bed: '1 кровать 160×200 + большой диван', floor: 'Корпус 3, 2 этаж, №23', img: img('/img/apartament-senior.jpg'), features: ['Мини-кухня', 'Smart TV', 'Отдельный вход', 'Сплит-система', 'Набор посуды', 'Сейф', 'Wi-Fi'], category: 'Апартаменты' },
+  { id: 'studio-301', name: 'Studio 301', desc: 'Студия с кухней и террасой. Панорамный вид.', area: '34 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: img('/img/studio-301.jpg'), features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Набор посуды', 'Wi-Fi'], category: 'Студии' },
+  { id: 'studio-302', name: 'Studio 302', desc: 'Студия с кухней и террасой для романтического отдыха вдвоём.', area: '26 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: img('/img/studio-302.jpg'), features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Wi-Fi'], category: 'Студии' },
+  { id: 'studio-303', name: 'Studio 303', desc: 'Компактная студия с кухней и выходом на террасу.', area: '20 м²', capacity: '2 гостя', bed: '1 двуспальная кровать', floor: '3 этаж', img: img('/img/studio-303.jpg'), features: ['Кухня', 'Терраса', 'Smart TV', 'Сплит-система', 'Wi-Fi'], category: 'Студии' },
+  { id: 'aframe', name: 'А-Фрейм 100 м²', desc: 'Двухэтажный дом с панорамным остеклением, 3 спальнями, гостиной, кухней и мангальной зоной.', area: '100 м²', capacity: '8 гостей', bed: '3 спальни + гостиная', floor: 'Отдельный дом', img: img('/img/aframe.webp'), features: ['Панорамные окна', 'Мангальная зона', 'Полная кухня', 'Smart TV', 'Сплит-система', 'Терраса', 'Wi-Fi'], category: 'A-Frame', highlight: true },
 ]
 
 const defaultFreeServices = [

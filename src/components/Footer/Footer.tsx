@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
 import { useLanguage } from '../../i18n'
 import styles from './Footer.module.scss'
+import { img } from '../../utils/assets'
 
-const LOGO_URL = '/img/logo.webp'
+const LOGO_URL = img('/img/logo.webp')
 
 export default function Footer() {
   const { isDark } = useTheme()

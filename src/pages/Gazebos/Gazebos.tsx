@@ -1,13 +1,14 @@
 import styles from './Gazebos.module.scss'
+import { img } from '../../utils/assets'
 
 interface Props { type: 'small' | 'big' }
 
 export default function Gazebos({ type }: Props) {
   const isSmall = type === 'small'
   const imgs = [
-    '/img/gazebo1.png',
-    '/img/besedki.webp',
-    '/img/pier.jpg',
+    img('/img/gazebo1.png'),
+    img('/img/besedki.webp'),
+    img('/img/pier.jpg'),
   ]
 
   const summerRows = isSmall
