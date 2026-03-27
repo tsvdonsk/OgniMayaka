@@ -12,7 +12,7 @@ function RoomCard({ room, onImageClick }: { room: RoomItem; onImageClick: () => 
   return (
     <div className={clsx(styles.card, room.highlight && styles.cardHighlight)}>
       <div className={styles.cardImgWrap} style={{ cursor: 'pointer' }} onClick={onImageClick}>
-        <img src={room.img} alt={room.name} className={styles.cardImg} />
+        <img src={room.img} alt={room.name} className={styles.cardImg} loading="lazy" />
         <div className={styles.cardImgOverlay} />
         <span className={styles.cardCategory}>{room.category}</span>
         {room.highlight && (

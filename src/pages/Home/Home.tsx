@@ -140,7 +140,7 @@ export default function Home() {
                 style={{ ...style, cursor: 'pointer' }}
                 onClick={() => setLightbox({ items: accomItems, index: i })}
               >
-                <img src={src} alt="" className={styles.accomPhoto} />
+                <img src={src} alt="" className={styles.accomPhoto} loading="lazy" />
               </div>
             ))}
           </div>
@@ -171,7 +171,7 @@ export default function Home() {
                     onMouseLeave={e => (e.currentTarget as HTMLVideoElement).pause()}
                   />
                 ) : (
-                  <img src={item.url} alt={item.caption || ''} className={styles.galleryImg} />
+                  <img src={item.url} alt={item.caption || ''} className={styles.galleryImg} loading="lazy" />
                 )}
                 {item.caption && (
                   <div className={styles.galleryCaption}>
@@ -215,7 +215,7 @@ export default function Home() {
         <div className={styles.svcGrid}>
           {serviceCards.map(item => (
             <Link key={item.href} to={item.href} className={styles.svcCard}>
-              <img src={item.img} alt={item.title} className={styles.svcImg} />
+              <img src={item.img} alt={item.title} className={styles.svcImg} loading="lazy" />
               <div className={styles.svcOverlay} />
               <div className={styles.svcContent}>
                 <span className={styles.svcBadge}>{item.badge}</span>
@@ -238,7 +238,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.twoCol}>
           <div className={styles.aboutImgWrap}>
-            <img src={img('/img/about.webp')} alt="О базе" className={styles.aboutImg} />
+            <img src={img('/img/about.webp')} alt="О базе" className={styles.aboutImg} loading="lazy" />
           </div>
           <div>
             <span className={styles.badge}>{t('home_aboutBadge')}</span>

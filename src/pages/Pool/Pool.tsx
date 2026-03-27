@@ -44,7 +44,7 @@ export default function Pool() {
           <div className={styles.photoGrid}>
             {imgs.slice(1).map((src, i) => (
               <div key={i} className={styles.photoWrap}>
-                <img src={src} alt="" className={styles.photo} />
+                <img src={src} alt="" className={styles.photo} loading="lazy" />
               </div>
             ))}
             <div className={styles.accentCard}>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTheme } from '../../context/ThemeContext'
 import { useData } from '../../context/DataContext'
 import type { NewsItem, MediaItem } from '../../context/DataContext'
+import MediaUpload from '../../components/MediaUpload/MediaUpload'
 
 const emptyNews = (): NewsItem => ({ id: Date.now().toString(), title: '', content: '', date: new Date().toISOString().slice(0, 10), emoji: '📰', published: false, media: [] })
 
@@ -20,7 +21,7 @@ function MediaEditor({ media, onChange }: { media: MediaItem[]; onChange: (m: Me
   return (
     <div>
       <p style={{ color: C.faint, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Фото / Видео</p>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
         <select value={type} onChange={e => setType(e.target.value as 'image' | 'video')}
           style={{ padding: '8px 10px', background: C.isDark ? 'rgba(42,36,32,0.3)' : '#fff', border: `1px solid ${C.border}`, borderRadius: 4, color: C.text2, fontSize: 13 }}>
           <option value="image">Изображение</option>
@@ -29,6 +30,17 @@ function MediaEditor({ media, onChange }: { media: MediaItem[]; onChange: (m: Me
         <input value={url} onChange={e => setUrl(e.target.value)} placeholder="URL файла" style={{ flex: 1, minWidth: 200, padding: '8px 10px', background: C.isDark ? 'rgba(42,36,32,0.3)' : '#fff', border: `1px solid ${C.border}`, borderRadius: 4, color: C.text, fontSize: 13 }} />
         <input value={caption} onChange={e => setCaption(e.target.value)} placeholder="Подпись (необязательно)" style={{ width: 160, padding: '8px 10px', background: C.isDark ? 'rgba(42,36,32,0.3)' : '#fff', border: `1px solid ${C.border}`, borderRadius: 4, color: C.text, fontSize: 13 }} />
         <button onClick={add} style={{ padding: '8px 16px', background: C.accentBg2, border: `1px solid ${C.borderAccent}`, borderRadius: 4, color: C.accent, fontSize: 13, cursor: 'pointer', fontWeight: 600 }}>+ Добавить</button>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+        <span style={{ color: C.ghost, fontSize: 12 }}>или</span>
+        <MediaUpload
+          accept="image/*,video/*"
+          label="Загрузить файл (авто-сжатие)"
+          onUpload={r => {
+            onChange([...media, { id: Date.now().toString(), type: r.type, url: r.url, caption: caption.trim() }])
+            setCaption('')
+          }}
+        />
       </div>
       {media.length > 0 && (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

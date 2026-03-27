@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTheme } from '../../context/ThemeContext'
 import { useData } from '../../context/DataContext'
 import type { MediaItem } from '../../context/DataContext'
+import MediaUpload from '../../components/MediaUpload/MediaUpload'
 
 export default function AdminMedia() {
   const { C } = useTheme()
@@ -47,12 +48,18 @@ export default function AdminMedia() {
         <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 6, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
             <label style={{ display: 'block', color: C.ghost, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Фоновое фото (URL)</label>
-            <input value={heroImage} onChange={e => setHeroImage(e.target.value)} placeholder="https://..." style={{ ...inp, width: '100%' }} />
+            <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+              <input value={heroImage} onChange={e => setHeroImage(e.target.value)} placeholder="https://..." style={{ ...inp, flex: 1 }} />
+            </div>
+            <MediaUpload accept="image/*" label="Загрузить фото" onUpload={r => setHeroImage(r.url)} />
             {heroImage && <img src={heroImage} alt="" style={{ marginTop: 10, height: 100, borderRadius: 4, objectFit: 'cover', maxWidth: 300 }} />}
           </div>
           <div>
             <label style={{ display: 'block', color: C.ghost, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Фоновое видео (URL, приоритет)</label>
-            <input value={heroVideo} onChange={e => setHeroVideo(e.target.value)} placeholder="https://... (mp4, webm)" style={{ ...inp, width: '100%' }} />
+            <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+              <input value={heroVideo} onChange={e => setHeroVideo(e.target.value)} placeholder="https://... (mp4, webm)" style={{ ...inp, flex: 1 }} />
+            </div>
+            <MediaUpload accept="video/*" label="Загрузить видео" onUpload={r => setHeroVideo(r.url)} />
             {heroVideo && (
               <video src={heroVideo} muted autoPlay loop style={{ marginTop: 10, height: 100, borderRadius: 4, objectFit: 'cover', maxWidth: 300 }} />
             )}
@@ -78,7 +85,7 @@ export default function AdminMedia() {
         {/* Add */}
         <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 6, padding: '20px 24px', marginBottom: 16 }}>
           <p style={{ color: C.muted, fontSize: 13, marginBottom: 12, fontWeight: 500 }}>+ Добавить медиа</p>
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 12 }}>
             <select value={newType} onChange={e => setNewType(e.target.value as 'image' | 'video')}
               style={{ ...inp, padding: '9px 10px' }}>
               <option value="image">Изображение</option>
@@ -89,6 +96,18 @@ export default function AdminMedia() {
             <button onClick={addGallery} style={{ padding: '9px 18px', background: C.accentBg2, border: `1px solid ${C.borderAccent}`, borderRadius: 4, color: C.accent, fontSize: 13, cursor: 'pointer', fontWeight: 600 }}>
               Добавить
             </button>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ color: C.ghost, fontSize: 12 }}>или</span>
+            <MediaUpload
+              accept="image/*,video/*"
+              label="Загрузить файл (авто-сжатие)"
+              onUpload={r => {
+                const item: MediaItem = { id: Date.now().toString(), type: r.type, url: r.url, caption: newCaption.trim() }
+                setSiteMedia({ ...siteMedia, galleryImages: [...siteMedia.galleryImages, item] })
+                setNewCaption('')
+              }}
+            />
           </div>
         </div>
 

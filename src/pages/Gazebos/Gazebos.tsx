@@ -9,20 +9,20 @@ export default function Gazebos({ type }: Props) {
   const isSmall = type === 'small'
   const imgs = isSmall
     ? [
-        img('/img/gazebo-small-1.png'),
-        img('/img/gazebo-small-2.png'),
-        img('/img/gazebo-small-3.png'),
-        img('/img/gazebo-small-4.png'),
-        img('/img/gazebo-small-5.png'),
-        img('/img/gazebo-small-6.png'),
-        img('/img/gazebo-small-7.png'),
-        img('/img/gazebo-small-8.png'),
-        img('/img/gazebo-small-9.png'),
-        img('/img/gazebo-small-10.png'),
-        img('/img/gazebo-small-11.png'),
-        img('/img/gazebo-small-12.png'),
-        img('/img/gazebo-small-13.png'),
-        img('/img/gazebo-small-14.png'),
+        img('/img/gazebo-small-1.webp'),
+        img('/img/gazebo-small-2.webp'),
+        img('/img/gazebo-small-3.webp'),
+        img('/img/gazebo-small-4.webp'),
+        img('/img/gazebo-small-5.webp'),
+        img('/img/gazebo-small-6.webp'),
+        img('/img/gazebo-small-7.webp'),
+        img('/img/gazebo-small-8.webp'),
+        img('/img/gazebo-small-9.webp'),
+        img('/img/gazebo-small-10.webp'),
+        img('/img/gazebo-small-11.webp'),
+        img('/img/gazebo-small-12.webp'),
+        img('/img/gazebo-small-13.webp'),
+        img('/img/gazebo-small-14.webp'),
         img('/img/gazebo-small-15.jpg'),
         img('/img/gazebo-small-16.jpg'),
         img('/img/gazebo-small-17.jpg'),
@@ -83,11 +83,11 @@ export default function Gazebos({ type }: Props) {
         <div className={styles.twoCol}>
           <div className={styles.photoGrid}>
             <div className={styles.photoWide}>
-              <img src={imgs[2]} alt="" className={styles.photo} />
+              <img src={imgs[2]} alt="" className={styles.photo} loading="lazy" />
             </div>
             {imgs.slice(0, 2).map((src, i) => (
               <div key={i} className={styles.photoWrap}>
-                <img src={src} alt="" className={styles.photo} />
+                <img src={src} alt="" className={styles.photo} loading="lazy" />
               </div>
             ))}
           </div>

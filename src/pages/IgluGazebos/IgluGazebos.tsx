@@ -64,7 +64,7 @@ export default function IgluGazebos() {
           <div className={styles.photoGrid}>
             {imgs.map((src, i) => (
               <div key={i} className={i === 0 ? `${styles.photoWrap} ${styles.photoWrapWide}` : `${styles.photoWrap} ${styles.photoWrapSquare}`}>
-                <img src={src} alt="" className={styles.photo} />
+                <img src={src} alt="" className={styles.photo} loading="lazy" />
               </div>
             ))}
           </div>
