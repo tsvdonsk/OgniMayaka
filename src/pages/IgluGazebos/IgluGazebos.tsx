@@ -2,9 +2,10 @@ import styles from './IgluGazebos.module.scss'
 import { img } from '../../utils/assets'
 
 const imgs = [
-  img('/img/iglu.webp'),
-  img('/img/evening1.webp'),
-  img('/img/evening2.webp'),
+  img('/img/iglu-1.webp'),
+  img('/img/iglu-2.webp'),
+  img('/img/iglu-3.webp'),
+  img('/img/iglu-4.webp'),
 ]
 
 export default function IgluGazebos() {

@@ -5,11 +5,36 @@ interface Props { type: 'small' | 'big' }
 
 export default function Gazebos({ type }: Props) {
   const isSmall = type === 'small'
-  const imgs = [
-    img('/img/gazebo1.png'),
-    img('/img/besedki.webp'),
-    img('/img/pier.jpg'),
-  ]
+  const imgs = isSmall
+    ? [
+        img('/img/gazebo-small-1.png'),
+        img('/img/gazebo-small-2.png'),
+        img('/img/gazebo-small-3.png'),
+        img('/img/gazebo-small-4.png'),
+        img('/img/gazebo-small-5.png'),
+        img('/img/gazebo-small-6.png'),
+        img('/img/gazebo-small-7.png'),
+        img('/img/gazebo-small-8.png'),
+        img('/img/gazebo-small-9.png'),
+        img('/img/gazebo-small-10.png'),
+        img('/img/gazebo-small-11.png'),
+        img('/img/gazebo-small-12.png'),
+        img('/img/gazebo-small-13.png'),
+        img('/img/gazebo-small-14.png'),
+        img('/img/gazebo-small-15.jpg'),
+        img('/img/gazebo-small-16.jpg'),
+        img('/img/gazebo-small-17.jpg'),
+      ]
+    : [
+        img('/img/gazebo-big-1.jpg'),
+        img('/img/gazebo-big-2.jpg'),
+        img('/img/gazebo-big-3.jpg'),
+        img('/img/gazebo-big-4.jpg'),
+        img('/img/gazebo-big-5.jpg'),
+        img('/img/gazebo-big-6.jpg'),
+        img('/img/gazebo-big-7.jpg'),
+        img('/img/gazebo-big-8.jpg'),
+      ]
 
   const summerRows = isSmall
     ? [{ p: 'Будни (Пн–Чт)', a: '500 ₽/чел', c: '250 ₽/чел', m: 'мин. 4 000 ₽' }, { p: 'Выходные (Пт–Вс)', a: '600 ₽/чел', c: '300 ₽/чел', m: 'мин. 4 800 ₽' }, { p: 'Праздники', a: '600 ₽/чел', c: '300 ₽/чел', m: '—' }]

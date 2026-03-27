@@ -3,9 +3,21 @@ import styles from './Pool.module.scss'
 import { img } from '../../utils/assets'
 
 const imgs = [
-  img('/img/bassejn.webp'),
-  img('/img/pool2.webp'),
-  img('/img/pool_winter.webp'),
+  img('/img/pool-1.webp'),
+  img('/img/pool-2.webp'),
+  img('/img/pool-3.webp'),
+  img('/img/pool-4.webp'),
+  img('/img/pool-5.webp'),
+  img('/img/pool-6.webp'),
+  img('/img/pool-7.webp'),
+  img('/img/pool-8.webp'),
+  img('/img/pool-9.jpg'),
+  img('/img/pool-10.jpg'),
+  img('/img/pool-11.jpg'),
+  img('/img/pool-12.jpg'),
+  img('/img/pool-13.jpg'),
+  img('/img/pool-14.webp'),
+  img('/img/pool-15.webp'),
 ]
 
 export default function Pool() {

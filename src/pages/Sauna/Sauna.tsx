@@ -3,9 +3,32 @@ import styles from './Sauna.module.scss'
 import { img } from '../../utils/assets'
 
 const imgs = [
-  img('/img/sauna1.jpg'),
-  img('/img/sauna2.jpg'),
-  img('/img/sauna3.jpg'),
+  img('/img/sauna-1.jpg'),
+  img('/img/sauna-2.jpg'),
+  img('/img/sauna-3.jpg'),
+  img('/img/sauna-4.jpg'),
+  img('/img/sauna-5.jpg'),
+  img('/img/sauna-6.jpg'),
+  img('/img/sauna-7.jpg'),
+  img('/img/sauna-8.jpg'),
+  img('/img/sauna-9.jpg'),
+  img('/img/sauna-10.jpg'),
+  img('/img/sauna-11.jpg'),
+  img('/img/sauna-12.jpg'),
+  img('/img/sauna-13.jpg'),
+  img('/img/sauna-14.jpg'),
+  img('/img/sauna-15.jpg'),
+  img('/img/sauna-16.jpg'),
+  img('/img/sauna-17.jpg'),
+  img('/img/sauna-18.jpg'),
+  img('/img/sauna-19.jpg'),
+  img('/img/sauna-20.jpg'),
+  img('/img/sauna-21.jpg'),
+  img('/img/sauna-22.jpg'),
+  img('/img/sauna-23.jpg'),
+  img('/img/sauna-24.jpg'),
+  img('/img/sauna-25.jpg'),
+  img('/img/sauna-26.jpg'),
 ]
 
 export default function Sauna() {

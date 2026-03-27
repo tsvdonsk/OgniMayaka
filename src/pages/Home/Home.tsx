@@ -11,9 +11,12 @@ import styles from './Home.module.scss'
 import { img } from '../../utils/assets'
 
 const accomItems: LightboxItem[] = [
-  { url: img('/img/room1.webp'), type: 'image' },
-  { url: img('/img/room3.webp'), type: 'image' },
-  { url: img('/img/room2.webp'), type: 'image' },
+  { url: img('/img/room-standart.jpg'), type: 'image' },
+  { url: img('/img/room-standart-twin.webp'), type: 'image' },
+  { url: img('/img/room-lux.jpg'), type: 'image' },
+  { url: img('/img/room-studio-301.jpg'), type: 'image' },
+  { url: img('/img/room-apartament.webp'), type: 'image' },
+  { url: img('/img/aframe-1.webp'), type: 'image' },
 ]
 
 export default function Home() {
@@ -29,10 +32,10 @@ export default function Home() {
   }))
 
   const serviceCards = [
-    { img: img('/img/bassejn.webp'), badge: t('svc_badgeSpa'), title: t('svc_poolTitle'), desc: t('svc_poolDesc'), href: '/bassejn', label: t('svc_poolLabel') },
-    { img: img('/img/sauna1.jpg'), badge: t('svc_badgeSauna'), title: t('svc_saunaTitle'), desc: t('svc_saunaDesc'), href: '/sauna', label: t('svc_saunaLabel') },
-    { img: img('/img/besedki.webp'), badge: t('svc_badgeRelax'), title: t('svc_gazeboTitle'), desc: t('svc_gazeboDesc'), href: '/malye-besedki', label: t('svc_gazeboLabel') },
-    { img: img('/img/iglu.webp'), badge: t('svc_badgeAtmo'), title: t('svc_igluTitle'), desc: t('svc_igluDesc'), href: '/iglu-besedki-u-bassejna', label: t('svc_igluLabel') },
+    { img: img('/img/pool-1.webp'), badge: t('svc_badgeSpa'), title: t('svc_poolTitle'), desc: t('svc_poolDesc'), href: '/bassejn', label: t('svc_poolLabel') },
+    { img: img('/img/sauna-1.jpg'), badge: t('svc_badgeSauna'), title: t('svc_saunaTitle'), desc: t('svc_saunaDesc'), href: '/sauna', label: t('svc_saunaLabel') },
+    { img: img('/img/gazebo-big-1.jpg'), badge: t('svc_badgeRelax'), title: t('svc_gazeboTitle'), desc: t('svc_gazeboDesc'), href: '/malye-besedki', label: t('svc_gazeboLabel') },
+    { img: img('/img/iglu-1.webp'), badge: t('svc_badgeAtmo'), title: t('svc_igluTitle'), desc: t('svc_igluDesc'), href: '/iglu-besedki-u-bassejna', label: t('svc_igluLabel') },
   ]
 
   const [accomLine1, accomLine2] = t('home_accomTitle').split('\n')
@@ -127,9 +130,9 @@ export default function Home() {
           </div>
           <div className={styles.accomPhotos}>
             {[
-              { src: img('/img/room1.webp'), style: { aspectRatio: '4/5', gridRow: 'span 2' } },
-              { src: img('/img/room3.webp'), style: { aspectRatio: '1/1' } },
-              { src: img('/img/room2.webp'), style: { aspectRatio: '1/1' } },
+              { src: img('/img/room-standart.jpg'), style: { aspectRatio: '4/5', gridRow: 'span 2' } },
+              { src: img('/img/room-studio-301.jpg'), style: { aspectRatio: '1/1' } },
+              { src: img('/img/room-lux.jpg'), style: { aspectRatio: '1/1' } },
             ].map(({ src, style }, i) => (
               <div
                 key={i}
@@ -235,7 +238,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.twoCol}>
           <div className={styles.aboutImgWrap}>
-            <img src={img('/img/about.png')} alt="О базе" className={styles.aboutImg} />
+            <img src={img('/img/about.webp')} alt="О базе" className={styles.aboutImg} />
           </div>
           <div>
             <span className={styles.badge}>{t('home_aboutBadge')}</span>
