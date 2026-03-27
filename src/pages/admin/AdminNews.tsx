@@ -51,20 +51,33 @@ function MediaEditor({ media, onChange }: { media: MediaItem[]; onChange: (m: Me
   )
 }
 
-const EMOJI_LIST = [
-  '📰','📢','📣','🔔','ℹ️','⭐','🌟','✨','💫','🎉',
-  '🎊','🎁','🏆','🥇','🎵','🎶','🎭','🎿','⛷️','🏊',
-  '🌊','🏖️','🌅','🌄','🏔️','🌲','🌿','🍃','🌸','🌺',
-  '🌻','🌞','⛅','❄️','🔥','🍽️','🍷','🍵','☕','🛁',
-  '🛌','🏡','🚀','🌈','🌙','🧖','🧘','💆','⚡','🦋',
+const EMOJI_CATEGORIES: { label: string; icon: string; emojis: string[] }[] = [
+  { label: 'Смайлы', icon: '😀', emojis: ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','☺️','😚','😙','🥲','😋','😛','😜','🤪','😝','🤑','🤗','🤭','🤫','🤔','🤐','🤨','😐','😑','😶','😏','😒','🙄','😬','🤥','😌','😔','😪','🤤','😴','😷','🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','😟','🙁','☹️','😮','😯','😲','😳','🥺','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺','👻','👽','👾','🤖'] },
+  { label: 'Жесты', icon: '👋', emojis: ['👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','🙏','✍️','💅','🤳','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🫀','🫁','🧠','🦷','🦴','👀','👁️','👅','👄','💋'] },
+  { label: 'Люди', icon: '👶', emojis: ['👶','🧒','👦','👧','🧑','👱','👨','🧔','👩','🧓','👴','👵','👲','👳','🧕','🤵','👰','🤰','🤱','👮','🕵️','💂','🥷','👷','🫅','🤴','👸','🎅','🤶','🧙','🧝','🧛','🧟','🧞','🧜','🧚','🧑‍⚕️','🧑‍🎓','🧑‍🏫','🧑‍⚖️','🧑‍🌾','🧑‍🍳','🧑‍🔧','🧑‍🏭','🧑‍💼','🧑‍🔬','🧑‍🎨','🧑‍🚒','🧑‍✈️','🧑‍🚀','🧑‍💻','🧑‍🎤','🧑‍🎭','🧑‍🎪','🕴️','💆','💇','🚶','🧍','🧎','🏃','💃','🕺','🧗','🏇','🏋️','🤼','🤸','⛹️','🤺','🏊','🚣','🧘','🛀','🛌'] },
+  { label: 'Животные', icon: '🐶', emojis: ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐻‍❄️','🐨','🐯','🦁','🐮','🐷','🐽','🐸','🐵','🙈','🙉','🙊','🐔','🐧','🐦','🐤','🦆','🦅','🦉','🦇','🐺','🐗','🐴','🦄','🐝','🐛','🦋','🐌','🐞','🐜','🪲','🦟','🦗','🕷️','🦂','🐢','🐍','🦎','🦖','🦕','🐙','🦑','🦐','🦞','🦀','🐡','🐠','🐟','🐬','🐳','🐋','🦈','🦭','🐊','🐅','🐆','🦓','🦍','🦧','🦣','🐘','🦛','🦏','🐪','🐫','🦒','🦘','🦬','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🦙','🐐','🦌','🐕','🐩','🦮','🐕‍🦺','🐈','🐈‍⬛','🐓','🦃','🦤','🦚','🦜','🦢','🦩','🕊️','🐇','🦝','🦨','🦡','🦫','🦦','🦥','🐁','🐀','🐿️','🦔'] },
+  { label: 'Природа', icon: '🌿', emojis: ['🌵','🎄','🌲','🌳','🌴','🪵','🌱','🌿','☘️','🍀','🎍','🪴','🎋','🍃','🍂','🍁','🪺','🍄','🌾','💐','🌷','🌹','🥀','🪷','🌺','🌸','🌼','🌻','🌞','🌝','🌛','🌜','🌚','🌕','🌖','🌗','🌘','🌑','🌒','🌓','🌔','🌙','🌟','⭐','🌠','🌌','☀️','⛅','☁️','⛈️','🌤️','🌥️','🌦️','🌧️','🌨️','🌩️','🌪️','🌫️','🌬️','🌀','🌈','🌂','☂️','☔','⛱️','⚡','❄️','☃️','⛄','🔥','💧','🌊','🌋','🌁','🏔️','⛰️','🗻','🏕️','🏖️','🏜️','🏝️','🏞️'] },
+  { label: 'Еда', icon: '🍕', emojis: ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🫐','🍈','🍒','🍑','🥭','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥬','🥒','🌶️','🫑','🧄','🧅','🥔','🍠','🫘','🌽','🍞','🥐','🥖','🫓','🥨','🧀','🥚','🍳','🧈','🥞','🧇','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🫔','🌮','🌯','🥙','🧆','🥚','🍲','🫕','🍛','🍜','🍝','🍠','🍢','🍣','🍤','🍙','🍚','🍘','🍥','🥮','🍡','🥟','🥠','🥡','🦪','🍦','🍧','🍨','🍩','🍪','🎂','🍰','🧁','🥧','🍫','🍬','🍭','🍮','🍯','🍼','🥛','☕','🫖','🍵','🧃','🥤','🧋','🍶','🍺','🍻','🥂','🍷','🥃','🍸','🍹','🧉','🍾'] },
+  { label: 'Активности', icon: '⚽', emojis: ['⚽','🏀','🏈','⚾','🥎','🎾','🏐','🏉','🥏','🎱','🪀','🏓','🏸','🏒','🥍','🏑','🥅','⛳','🪁','🎣','🤿','🎽','🎿','🛷','🥌','🎯','🪃','🎮','🕹️','🎲','🧩','🃏','🀄','🎭','🎨','🎬','🎤','🎧','🎼','🎵','🎶','🥁','🪘','🎷','🎺','🎸','🪕','🎻','🪗','🏋️','🤼','🤸','🤺','⛹️','🏊','🚣','🧘','🛀','🎠','🎡','🎢','🎪','🤹','🎭','🎳','🏆','🥇','🥈','🥉','🏅','🎖️'] },
+  { label: 'Путешествия', icon: '✈️', emojis: ['🚗','🚕','🚙','🚌','🚎','🏎️','🚓','🚑','🚒','🚐','🛻','🚚','🚛','🚜','🏍️','🛵','🛺','🚲','🛴','🛹','🛼','🚏','🛣️','🛤️','⛽','🚨','🚥','🚦','🛑','⚓','⛵','🛶','🚤','🛥️','🛳️','⛴️','🚢','✈️','🛩️','🛫','🛬','🪂','💺','🚁','🚟','🚃','🚋','🚞','🚝','🚄','🚅','🚈','🚂','🚆','🚇','🚊','🚉','🛸','🚀','🛰️','💺','🌍','🌎','🌏','🗺️','🧭','🏠','🏡','🏢','🏣','🏤','🏥','🏦','🏨','🏩','🏪','🏫','🏬','🏭','🏯','🏰','⛪','💒','🗼','🗽','⛩️','🕌','🛕','🕍','🌁','🌃','🏙️','🌄','🌅','🌆','🌇','🌉','♾️','🎠','🎡','⛲','🎢','🗺️','🗿'] },
+  { label: 'Предметы', icon: '💡', emojis: ['⌚','📱','💻','⌨️','🖥️','🖨️','🖱️','💾','💿','📀','📷','📸','📹','🎥','📽️','🎞️','📞','☎️','📟','📠','📺','📻','🧭','⏱️','⏰','🕰️','⌛','📡','🔋','🔌','💡','🔦','🕯️','💰','💴','💵','💶','💷','💸','💳','🪙','💎','⚖️','🪜','🧲','🪛','🔧','🔨','⛏️','⚒️','🛠️','🗡️','⚔️','🛡️','🔑','🗝️','🔒','🔓','🚪','🪞','🪟','🛋️','🪑','🚽','🪠','🚿','🛁','🪤','🪒','🧴','🧷','🧹','🧺','🧻','🪣','🧼','🫧','🪥','🧽','🧯','🛒','🚪','🧲','🪝','🧰','🪜','⚗️','🔬','🔭','📡','💉','🩸','💊','🩹','🩺','🩻','🩼','🦺','🥽','🥼','🧥','👔','👕','👖','🩲','🩳','👗','👘','🥻','🩱','👙','👚','👛','👜','👝','🎒','🧳','👒','🎩','🧢','👑','💍','💄','👓','🕶️','🥽','🌂'] },
+  { label: 'Символы', icon: '❤️', emojis: ['❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','💟','☮️','✝️','☪️','🕉️','☸️','🔯','✡️','🛐','⛎','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','🆔','⚕️','♾️','⚜️','🔰','♻️','✅','❎','🆘','❌','⛔','🚫','🔞','📵','🔕','🔇','💯','🔝','🆙','🆒','🆕','🆓','0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟','🔢','🔣','🔤','🅰️','🅱️','🆎','🆑','🅾️','🆚','📳','📴','📲','📶','📵','🔅','🔆','🔱','⚜️','🔰','♾️','✴️','❇️','💠','🔷','🔵','⚫','⚪','🔴','🟤','🟣','🔶','🟠','🟡','🟢','🟩','🟨','🟧','🟦','🟥','⬛','⬜','◼️','◻️','◾','◽','▪️','▫️','🔲','🔳'] },
 ]
 
 function NewsForm({ item, onSave, onCancel }: { item: NewsItem; onSave: (n: NewsItem) => void; onCancel: () => void }) {
   const { C } = useTheme()
   const [form, setForm] = useState<NewsItem>(item)
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
+  const [activeCat, setActiveCat] = useState(0)
+  const [emojiInput, setEmojiInput] = useState('')
   const set = (k: keyof NewsItem, v: unknown) => setForm(f => ({ ...f, [k]: v }))
   const inp = { background: C.isDark ? 'rgba(42,36,32,0.3)' : '#fff', border: `1px solid ${C.border}`, borderRadius: 4, color: C.text, padding: '10px 12px', fontSize: 14, width: '100%', boxSizing: 'border-box' as const, outline: 'none' }
+
+  const pickEmoji = (e: string) => { set('emoji', e); setShowEmojiPicker(false); setEmojiInput('') }
+
+  const currentEmojis = emojiInput.trim()
+    ? EMOJI_CATEGORIES.flatMap(c => c.emojis).filter(e => e.includes(emojiInput.trim()))
+    : EMOJI_CATEGORIES[activeCat].emojis
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -84,25 +97,76 @@ function NewsForm({ item, onSave, onCancel }: { item: NewsItem; onSave: (n: News
                 position: 'absolute', top: 'calc(100% + 4px)', left: 0, zIndex: 200,
                 background: C.isDark ? 'rgba(12,11,9,0.98)' : 'rgba(255,253,248,0.98)',
                 border: `1px solid ${C.border}`, borderRadius: 8,
-                padding: 10, display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: 2,
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3)', width: 310,
+                boxShadow: '0 8px 32px rgba(0,0,0,0.3)', width: 360,
+                overflow: 'hidden',
               }}>
-                {EMOJI_LIST.map(e => (
-                  <button
-                    key={e}
-                    type="button"
-                    onClick={() => { set('emoji', e); setShowEmojiPicker(false) }}
-                    style={{
-                      background: form.emoji === e ? C.accentBg2 : 'transparent',
-                      border: 'none', borderRadius: 4, fontSize: 20,
-                      cursor: 'pointer', padding: '4px 2px', lineHeight: 1.3,
-                      transition: 'background 0.1s',
-                    }}
-                    title={e}
-                  >
-                    {e}
-                  </button>
-                ))}
+                {/* Paste / type any emoji */}
+                <div style={{ padding: '10px 10px 8px', borderBottom: `1px solid ${C.borderSoft}` }}>
+                  <input
+                    autoFocus
+                    value={emojiInput}
+                    onChange={e => setEmojiInput(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter' && emojiInput.trim()) pickEmoji(emojiInput.trim()) }}
+                    placeholder="Вставить или написать эмодзи…"
+                    style={{ width: '100%', background: C.isDark ? 'rgba(42,36,32,0.4)' : 'rgba(0,0,0,0.05)', border: `1px solid ${C.border}`, borderRadius: 4, color: C.text, padding: '7px 10px', fontSize: 15, outline: 'none', boxSizing: 'border-box' }}
+                  />
+                  {emojiInput.trim() && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 8 }}>
+                      <span style={{ fontSize: 28, lineHeight: 1 }}>{emojiInput.trim()}</span>
+                      <button
+                        type="button"
+                        onClick={() => pickEmoji(emojiInput.trim())}
+                        style={{ padding: '5px 14px', background: C.accentBg2, border: `1px solid ${C.borderAccent}`, borderRadius: 4, color: C.accent, fontSize: 12, fontWeight: 700, cursor: 'pointer' }}
+                      >
+                        Выбрать
+                      </button>
+                      <span style={{ color: C.ghost, fontSize: 11 }}>или Enter</span>
+                    </div>
+                  )}
+                </div>
+                {/* Category tabs */}
+                {!emojiInput.trim() && (
+                  <div style={{ display: 'flex', overflowX: 'auto', borderBottom: `1px solid ${C.borderSoft}`, padding: '4px 6px 0' }}>
+                    {EMOJI_CATEGORIES.map((cat, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setActiveCat(i)}
+                        title={cat.label}
+                        style={{
+                          background: 'none', border: 'none', borderBottom: activeCat === i ? `2px solid ${C.accent}` : '2px solid transparent',
+                          cursor: 'pointer', fontSize: 18, padding: '4px 7px', flexShrink: 0,
+                          opacity: activeCat === i ? 1 : 0.5,
+                          transition: 'opacity 0.15s',
+                        }}
+                      >
+                        {cat.icon}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {/* Grid */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: 1, padding: 8, maxHeight: 220, overflowY: 'auto' }}>
+                  {currentEmojis.map((e, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => pickEmoji(e)}
+                      style={{
+                        background: form.emoji === e ? C.accentBg2 : 'transparent',
+                        border: 'none', borderRadius: 4, fontSize: 20,
+                        cursor: 'pointer', padding: '4px 2px', lineHeight: 1.3,
+                        transition: 'background 0.1s',
+                      }}
+                      title={e}
+                    >
+                      {e}
+                    </button>
+                  ))}
+                  {currentEmojis.length === 0 && (
+                    <div style={{ gridColumn: '1/-1', color: C.ghost, fontSize: 13, textAlign: 'center', padding: '16px 0' }}>Не найдено</div>
+                  )}
+                </div>
               </div>
             )}
           </div>

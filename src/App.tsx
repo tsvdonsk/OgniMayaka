@@ -16,6 +16,7 @@ import Admin from './pages/Admin'
 import ScrollToTop from './components/ScrollToTop'
 import { PravitaVisit, PravilaPool, Privacy, Terms, Requisites } from './pages/Documents'
 import News from './pages/News'
+import Vacancies from './pages/Vacancies/Vacancies'
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
                 <Route path="/uslugi" element={<Services />} />
                 <Route path="/kontakty" element={<Contacts />} />
                 <Route path="/novosti" element={<News />} />
+                <Route path="/vakansii" element={<Vacancies />} />
                 <Route path="/admin/*" element={<Admin />} />
                 <Route path="/pravila-poseshheniya" element={<PravitaVisit />} />
                 <Route path="/pravila-bassejna-doc" element={<PravilaPool />} />

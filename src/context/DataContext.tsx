@@ -41,6 +41,19 @@ export type ServiceItem = {
   price: string
 }
 
+export type VacancyItem = {
+  id: string
+  title: string
+  department: string
+  salary: string
+  schedule: string
+  requirements: string
+  duties: string
+  conditions: string
+  contact: string
+  published: boolean
+}
+
 export type SiteMedia = {
   heroImage: string
   heroVideo: string          // optional video for hero (if set, shows instead of image)
@@ -214,6 +227,69 @@ const defaultPaidServices: ServiceItem[] = [
   { id: 's18', name: 'Стирка и глажка сорочки', price: '150 ₽' },
 ]
 
+const defaultVacancies: VacancyItem[] = [
+  {
+    id: 'v1',
+    title: 'Администратор гостиницы',
+    department: 'Служба размещения',
+    salary: 'от 35 000 ₽',
+    schedule: '2/2 (день/ночь)',
+    requirements: 'Грамотная устная и письменная речь\nУверенный пользователь ПК\nОпыт работы в сфере гостиничного сервиса приветствуется\nСтрессоустойчивость, коммуникабельность',
+    duties: 'Заселение и выселение гостей, оформление документов\nБронирование и управление номерным фондом\nРабота с кассовым оборудованием\nКонсультирование гостей по услугам базы\nПриём и переадресация звонков',
+    conditions: 'Официальное трудоустройство по ТК РФ\nОбучение и ввод в должность\nПитание во время смены\nКорпоративная форма\nДружный коллектив',
+    contact: '+7 (928) 77-33-550',
+    published: true,
+  },
+  {
+    id: 'v2',
+    title: 'Горничная',
+    department: 'Служба номерного фонда',
+    salary: 'от 28 000 ₽',
+    schedule: '5/2',
+    requirements: 'Ответственность и аккуратность\nОпыт работы приветствуется, но не обязателен\nФизическая выносливость',
+    duties: 'Ежедневная уборка и поддержание чистоты в номерах\nСмена постельного белья и полотенец\nПополнение санитарно-гигиенических принадлежностей\nОтчёт о состоянии номера',
+    conditions: 'Официальное трудоустройство по ТК РФ\nОбед\nКорпоративная форма и инвентарь\nСтабильный график',
+    contact: '+7 (928) 77-33-550',
+    published: true,
+  },
+  {
+    id: 'v3',
+    title: 'Повар',
+    department: 'Служба питания',
+    salary: 'от 50 000 ₽',
+    schedule: '2/2',
+    requirements: 'Опыт работы поваром от 2 лет\nЗнание технологических карт и санитарных норм\nДействующая санитарная книжка',
+    duties: 'Приготовление блюд согласно меню и технологическим картам\nКонтроль качества и сроков хранения продуктов\nСоблюдение стандартов санитарии и гигиены\nПодготовка рабочего места и инвентаря',
+    conditions: 'Официальное трудоустройство по ТК РФ\nКонкурентная заработная плата\nПитание во время смены\nВозможность карьерного роста',
+    contact: '+7 (929) 551-43-91',
+    published: true,
+  },
+  {
+    id: 'v4',
+    title: 'Спасатель на водных объектах',
+    department: 'SPA-зона / Бассейн',
+    salary: 'от 40 000 ₽',
+    schedule: '2/2 (10:00–22:00)',
+    requirements: 'Действующий сертификат спасателя на водных объектах (ГИМС)\nОтличное физическое здоровье\nОпыт работы приветствуется\nОтветственность и внимательность',
+    duties: 'Обеспечение безопасности посетителей в зоне бассейна\nКонтроль соблюдения правил поведения на воде\nОказание первой медицинской помощи при необходимости\nВедение журнала смены',
+    conditions: 'Официальное трудоустройство по ТК РФ\nПитание во время смены\nКорпоративная форма\nКомфортные условия труда',
+    contact: '+7 (988) 259-88-05',
+    published: true,
+  },
+  {
+    id: 'v5',
+    title: 'Официант / Бармен',
+    department: 'Служба питания',
+    salary: 'от 35 000 ₽ + чаевые',
+    schedule: '2/2',
+    requirements: 'Опыт работы официантом или барменом от 1 года\nКоммуникабельность, доброжелательность\nПриятный внешний вид\nСанитарная книжка',
+    duties: 'Обслуживание гостей за столиком и у барной стойки\nПриём заказов, сервировка\nЗнание меню и умение давать рекомендации\nОбеспечение чистоты в зоне обслуживания',
+    conditions: 'Официальное трудоустройство по ТК РФ\nПитание во время смены\nЧаевые\nОбучение и наставничество',
+    contact: '+7 (929) 551-43-91',
+    published: true,
+  },
+]
+
 // ─── Context ──────────────────────────────────────────────────────────────────
 
 // ─── User & Reviews ──────────────────────────────────────────────────────────
@@ -256,6 +332,8 @@ type DataCtx = {
   setPaidServices: (s: ServiceItem[]) => void
   siteMedia: SiteMedia
   setSiteMedia: (m: SiteMedia) => void
+  vacancies: VacancyItem[]
+  setVacancies: (v: VacancyItem[]) => void
   // auth
   users: User[]
   setUsers: (u: User[]) => void
@@ -302,6 +380,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const [freeServices, setF] = useState<string[]>(() => load('om_free', defaultFreeServices))
   const [paidServices, setP] = useState<ServiceItem[]>(() => load('om_paid', defaultPaidServices))
   const [siteMedia, setM] = useState<SiteMedia>(() => load('om_media', defaultSiteMedia))
+  const [vacancies, setV] = useState<VacancyItem[]>(() => load('om_vacancies', defaultVacancies))
   const [users, setUsersState] = useState<User[]>(() => load('om_users', []))
   const [currentUser, setCurrent] = useState<User | null>(() => {
     const id = sessionStorage.getItem('om_uid')
@@ -316,6 +395,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const setFreeServices = (s: string[]) => { setF(s); save('om_free', s) }
   const setPaidServices = (s: ServiceItem[]) => { setP(s); save('om_paid', s) }
   const setSiteMedia = (m: SiteMedia) => { setM(m); save('om_media', m) }
+  const setVacancies = (v: VacancyItem[]) => { setV(v); save('om_vacancies', v) }
   const setUsers = (u: User[]) => { setUsersState(u); save('om_users', u) }
   const setReviews = (r: Review[]) => { setReviewsState(r); save('om_reviews', r) }
 
@@ -340,7 +420,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const logout = () => { setCurrent(null); sessionStorage.removeItem('om_uid') }
 
   return (
-    <DataContext.Provider value={{ news, setNews, rooms, setRooms, freeServices, setFreeServices, paidServices, setPaidServices, siteMedia, setSiteMedia, users, setUsers, currentUser, login, register, logout, reviews, setReviews }}>
+    <DataContext.Provider value={{ news, setNews, rooms, setRooms, freeServices, setFreeServices, paidServices, setPaidServices, siteMedia, setSiteMedia, vacancies, setVacancies, users, setUsers, currentUser, login, register, logout, reviews, setReviews }}>
       {children}
     </DataContext.Provider>
   )

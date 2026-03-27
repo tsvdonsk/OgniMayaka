@@ -54,6 +54,7 @@ export default function Footer() {
                 { label: t('footer_gazebos'), href: '/malye-besedki' },
                 { label: t('footer_services'), href: '/uslugi' },
                 { label: t('footer_contactsLink'), href: '/kontakty' },
+                { label: t('vac_navLabel'), href: '/vakansii' },
               ].map(link => (
                 <Link key={link.href} to={link.href} className={styles.link}>{link.label}</Link>
               ))}

@@ -1,3 +1,4 @@
+import { useLanguage } from '../../i18n'
 import styles from './DocumentPage.module.scss'
 
 interface Section {
@@ -14,14 +15,15 @@ interface DocumentPageProps {
 }
 
 export default function DocumentPage({ title, subtitle, updatedAt, sections }: DocumentPageProps) {
+  const { t } = useLanguage()
   return (
     <div className={styles.page}>
       <div className={styles.header}>
         <div className={styles.headerInner}>
-          <span className={styles.badge}>Документы</span>
+          <span className={styles.badge}>{t('doc_badge')}</span>
           <h1 className={styles.title}>{title}</h1>
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-          {updatedAt && <p className={styles.updated}>Обновлено: {updatedAt}</p>}
+          {updatedAt && <p className={styles.updated}>{t('doc_updated')} {updatedAt}</p>}
         </div>
       </div>
       <div className={styles.body}>

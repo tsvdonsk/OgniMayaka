@@ -6,6 +6,7 @@ import AdminRooms from './admin/AdminRooms'
 import AdminServices from './admin/AdminServices'
 import AdminMedia from './admin/AdminMedia'
 import AdminReviews from './admin/AdminReviews'
+import AdminVacancies from './admin/AdminVacancies'
 
 const ADMIN_PASSWORD = 'ogni2026'
 
@@ -60,6 +61,7 @@ function AdminLayout({ onLogout }: { onLogout: () => void }) {
     { href: '/admin/services', label: 'Услуги', icon: '⚙️' },
     { href: '/admin/media', label: 'Медиа / Фото', icon: '🖼' },
     { href: '/admin/reviews', label: 'Отзывы', icon: '⭐' },
+    { href: '/admin/vacancies', label: 'Вакансии', icon: '💼' },
   ]
 
   return (
@@ -103,6 +105,7 @@ function AdminLayout({ onLogout }: { onLogout: () => void }) {
           <Route path="/services" element={<AdminServices />} />
           <Route path="/media" element={<AdminMedia />} />
           <Route path="/reviews" element={<AdminReviews />} />
+          <Route path="/vacancies" element={<AdminVacancies />} />
         </Routes>
       </main>
     </div>

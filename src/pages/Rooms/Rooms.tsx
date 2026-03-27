@@ -1,14 +1,17 @@
+import { useState } from 'react'
 import clsx from 'clsx'
 import { useData } from '../../context/DataContext'
 import type { RoomItem } from '../../context/DataContext'
 import { useLanguage } from '../../i18n'
+import Lightbox from '../../components/Lightbox/Lightbox'
+import type { LightboxItem } from '../../components/Lightbox/Lightbox'
 import styles from './Rooms.module.scss'
 
-function RoomCard({ room }: { room: RoomItem }) {
+function RoomCard({ room, onImageClick }: { room: RoomItem; onImageClick: () => void }) {
   const { t } = useLanguage()
   return (
     <div className={clsx(styles.card, room.highlight && styles.cardHighlight)}>
-      <div className={styles.cardImgWrap}>
+      <div className={styles.cardImgWrap} style={{ cursor: 'pointer' }} onClick={onImageClick}>
         <img src={room.img} alt={room.name} className={styles.cardImg} />
         <div className={styles.cardImgOverlay} />
         <span className={styles.cardCategory}>{room.category}</span>
@@ -53,31 +56,36 @@ function RoomCard({ room }: { room: RoomItem }) {
 export default function Rooms() {
   const { rooms } = useData()
   const { t } = useLanguage()
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const lightboxItems: LightboxItem[] = rooms.map(r => ({ url: r.img, type: 'image', caption: r.name }))
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
         <div className={styles.headerInner}>
           <span className={styles.badge}>{t('rooms_title')}</span>
-          <h1 className={styles.title}>Выберите свой номер</h1>
-          <p className={styles.desc}>16 номеров и А-фрейм дом. От уютного стандарта до просторных апартаментов.</p>
+          <h1 className={styles.title}>{t('rooms_pageTitle')}</h1>
+          <p className={styles.desc}>{t('rooms_pageDesc')}</p>
           <div className={styles.promo}>
             <span className={styles.promoIcon}>✦</span>
-            <p className={styles.promoText}><strong>Скидка 30%</strong> · 01.02–31.03.26 · будние дни · бассейн и сауна включены</p>
+            <p className={styles.promoText}><strong>{t('rooms_promoDiscount')}</strong>{t('rooms_promoDetails')}</p>
           </div>
         </div>
       </div>
 
       <div className={styles.content}>
         <div className={styles.grid}>
-          {rooms.map(room => <RoomCard key={room.id} room={room} />)}
+          {rooms.map((room, i) => (
+            <RoomCard key={room.id} room={room} onImageClick={() => setLightboxIndex(i)} />
+          ))}
         </div>
 
         <div className={styles.included}>
-          <h3 className={styles.includedTitle}>Включено в стоимость проживания</h3>
-          <p className={styles.includedDesc}>Для всех гостей, независимо от типа номера</p>
+          <h3 className={styles.includedTitle}>{t('rooms_includedTitle')}</h3>
+          <p className={styles.includedDesc}>{t('rooms_includedDesc')}</p>
           <div className={styles.includedGrid}>
-            {['Подогреваемый бассейн (10:00–22:00)', 'Финская сауна', 'Парковка на территории', 'Wi-Fi', 'Мангальная зона', 'Причал для судов'].map(item => (
+            {[t('rooms_inc1'), t('rooms_inc2'), t('rooms_inc3'), t('rooms_inc4'), t('rooms_inc5'), t('rooms_inc6')].map(item => (
               <div key={item} className={styles.includedItem}>
                 <span className={styles.includedIcon}>◈</span>
                 <span className={styles.includedText}>{item}</span>
@@ -86,6 +94,15 @@ export default function Rooms() {
           </div>
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          items={lightboxItems}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNav={i => setLightboxIndex(i)}
+        />
+      )}
     </div>
   )
 }

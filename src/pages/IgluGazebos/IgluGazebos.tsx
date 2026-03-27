@@ -1,3 +1,4 @@
+import { useLanguage } from '../../i18n'
 import styles from './IgluGazebos.module.scss'
 import { img } from '../../utils/assets'
 
@@ -9,27 +10,43 @@ const imgs = [
 ]
 
 export default function IgluGazebos() {
+  const { t } = useLanguage()
+
+  const ph = t('iglu_perHour')
+
+  const priceCards = [
+    { l: t('iglu_weekdays'), p: `800 ₽${ph}`, n: t('iglu_monThu') },
+    { l: t('iglu_weekends'), p: `1 000 ₽${ph}`, n: t('iglu_friSun') },
+    { l: t('iglu_holidays'), p: `1 200 ₽${ph}`, n: '' },
+    { l: t('iglu_extraGuest'), p: `200 ₽${ph}`, n: t('iglu_each') },
+  ]
+
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <img src={imgs[0]} alt="Иглу" className={styles.heroImg} />
+        <img src={imgs[0]} alt="" className={styles.heroImg} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <span className={styles.badge}>Атмосфера</span>
-          <h1 className={styles.title}>Иглу-беседки у бассейна</h1>
-          <p className={styles.subtitle}>Купольные беседки с панорамным видом. Уют и приватность в любую погоду.</p>
+          <span className={styles.badge}>{t('iglu_badge')}</span>
+          <h1 className={styles.title}>{t('iglu_title')}</h1>
+          <p className={styles.subtitle}>{t('iglu_subtitle')}</p>
         </div>
       </div>
 
       <div className={styles.content}>
         <div className={styles.twoCol}>
           <div>
-            <h2 className={styles.descTitle}>Особая атмосфера</h2>
-            <p className={styles.bodyText}>Купольные конструкции позволяют наслаждаться природой в любую погоду. Внутри — тёплый свет, комфорт и ощущение собственного маленького мира.</p>
-            <p className={styles.bodyText}>Вечером пространство наполняется мягким светом — атмосфера, в которой хочется остаться подольше.</p>
-            <h3 className={styles.subTitle}>Идеально для:</h3>
+            <h2 className={styles.descTitle}>{t('iglu_descTitle')}</h2>
+            <p className={styles.bodyText}>{t('iglu_text1')}</p>
+            <p className={styles.bodyText}>{t('iglu_text2')}</p>
+            <h3 className={styles.subTitle}>{t('iglu_idealTitle')}</h3>
             <div className={styles.featureList}>
-              {['Камерных посиделок с друзьями', 'Романтических ужинов', 'Праздников в узком кругу', 'Фото- и видео-съёмок'].map(item => (
+              {[
+                t('iglu_ideal1'),
+                t('iglu_ideal2'),
+                t('iglu_ideal3'),
+                t('iglu_ideal4'),
+              ].map(item => (
                 <div key={item} className={styles.featureItem}>
                   <span className={styles.featureIcon}>◈</span>
                   <span className={styles.featureText}>{item}</span>
@@ -38,7 +55,7 @@ export default function IgluGazebos() {
             </div>
             <div className={styles.infoBox}>
               <p className={styles.infoLine}>
-                Тел. бассейна: <a href="tel:+79882598805" className={styles.infoLink}>+7 (988) 259-88-05</a>
+                {t('iglu_phoneLabel')} <a href="tel:+79882598805" className={styles.infoLink}>+7 (988) 259-88-05</a>
               </p>
               <p className={styles.infoHours}>10:00 – 22:00</p>
             </div>
@@ -54,10 +71,10 @@ export default function IgluGazebos() {
         </div>
 
         <div className={styles.priceBox}>
-          <h2 className={styles.priceTitle}>Стоимость аренды</h2>
-          <p className={styles.priceNote}>Малая иглу-беседка · до 8 человек · мин. 3 часа · 10:00–22:00</p>
+          <h2 className={styles.priceTitle}>{t('iglu_priceTitle')}</h2>
+          <p className={styles.priceNote}>{t('iglu_priceNote')}</p>
           <div className={styles.priceGrid}>
-            {[{ l: 'Будни', p: '800 ₽/час', n: 'Пн–Чт' }, { l: 'Выходные', p: '1 000 ₽/час', n: 'Пт–Вс' }, { l: 'Праздники', p: '1 200 ₽/час', n: '' }, { l: 'Доп. гость (>8)', p: '200 ₽/час', n: 'за каждого' }].map(p => (
+            {priceCards.map(p => (
               <div key={p.l} className={styles.priceCard}>
                 <p className={styles.priceCardLabel}>{p.l}</p>
                 <p className={styles.priceCardValue}>{p.p}</p>
@@ -65,7 +82,7 @@ export default function IgluGazebos() {
               </div>
             ))}
           </div>
-          <p className={styles.priceFootnote}>* Зимний тариф (01.10–31.03). Большая иглу-беседка — только для пользователей бассейна.</p>
+          <p className={styles.priceFootnote}>{t('iglu_footnote')}</p>
         </div>
       </div>
     </div>

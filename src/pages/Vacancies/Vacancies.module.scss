@@ -1,0 +1,190 @@
+@use '../../styles/helpers' as *;
+
+.page { background: var(--color-bg); padding-top: 72px; }
+
+.hero {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 72px 24px 60px;
+}
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.badge {
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+.title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+.subtitle {
+  color: var(--color-muted);
+  font-size: 16px;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.empty {
+  color: var(--color-ghost);
+  font-size: 15px;
+  text-align: center;
+  padding: 48px 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  &:hover { border-color: var(--color-accent); }
+}
+
+.cardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cardHeaderLeft { flex: 1; min-width: 0; }
+
+.cardTitle {
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.metaChip {
+  background: var(--color-accent-bg2);
+  border: 1px solid var(--color-border-accent);
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.metaDot { color: var(--color-border); font-size: 12px; }
+.metaSalary { color: var(--color-text); font-size: 13px; font-weight: 500; }
+.metaSchedule { color: var(--color-muted); font-size: 13px; }
+
+.arrow { color: var(--color-ghost); font-size: 12px; flex-shrink: 0; }
+
+.cardBody {
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px 32px;
+  padding-top: 24px;
+  margin-bottom: 28px;
+}
+
+.section {}
+.sectionTitle {
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sectionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sectionItem {
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+  &::before {
+    content: '◈';
+    color: var(--color-accent);
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }
+}
+
+.respond {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-soft);
+}
+.respondContact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.respondContactLabel {
+  color: var(--color-ghost);
+  font-size: 12px;
+}
+.respondPhone {
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  &:hover { color: var(--color-accent); }
+}
+.respondBtn {
+  display: inline-block;
+  padding: 10px 28px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+  color: #080806;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+  &:hover { opacity: 0.85; }
+}
