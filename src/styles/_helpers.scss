@@ -1,0 +1,20 @@
+$bp-tablet: 1024px;
+$bp-mobile: 860px;
+$bp-small:  480px;
+$bp-header: 900px;
+
+@mixin below-tablet {
+  @media (max-width: #{$bp-tablet}) { @content; }
+}
+@mixin below-mobile {
+  @media (max-width: #{$bp-mobile}) { @content; }
+}
+@mixin below-small {
+  @media (max-width: #{$bp-small}) { @content; }
+}
+@mixin above-header {
+  @media (min-width: #{$bp-header + 1px}) { @content; }
+}
+@mixin below-header {
+  @media (max-width: #{$bp-header}) { @content; }
+}

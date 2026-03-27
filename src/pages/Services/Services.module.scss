@@ -1,0 +1,57 @@
+@use '../../styles/helpers' as *;
+
+.page { background: var(--color-bg); padding-top: 72px; }
+.content { max-width: 1280px; margin: 0 auto; padding: 76px 24px; }
+
+.badge { color: var(--color-accent); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 12px; }
+.title { font-size: clamp(30px,4vw,54px); font-weight: 200; letter-spacing: -0.02em; color: var(--color-text); margin-bottom: 52px; }
+
+.freeSection { margin-bottom: 52px; }
+.freeTitleRow { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.freeSectionTitle { color: var(--color-text); font-size: 21px; font-weight: 400; }
+.includedBadge {
+  background: var(--color-accent-bg2);
+  border: 1px solid var(--color-border-accent);
+  color: var(--color-accent);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.freeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0;
+}
+.freeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.freeIcon { color: var(--color-accent); font-size: 10px; margin-top: 5px; flex-shrink: 0; }
+.freeText { color: var(--color-muted); font-size: 14px; }
+
+.paidSection {}
+.paidTitle { color: var(--color-text); font-size: 21px; font-weight: 400; margin-bottom: 24px; }
+.paidTable {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.paidRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--color-border-soft);
+  &:last-child { border-bottom: none; }
+}
+.paidRowAlt {
+  background: rgba(42,36,32,0.1);
+}
+[data-theme="light"] .paidRowAlt { background: rgba(100,80,60,0.03); }
+.paidRowName { color: var(--color-muted); font-size: 14px; }
+.paidRowPrice { color: var(--color-accent); font-size: 14px; font-weight: 500; flex-shrink: 0; margin-left: 16px; }

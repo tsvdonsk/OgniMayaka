@@ -1,0 +1,5 @@
+export { default as PravitaVisit } from './PravitaVisit'
+export { default as PravilaPool } from './PravilaPool'
+export { default as Privacy } from './Privacy'
+export { default as Terms } from './Terms'
+export { default as Requisites } from './Requisites'

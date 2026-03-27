@@ -1,0 +1,73 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+img, video { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+input, textarea { font-family: inherit; }
+
+::selection {
+  background-color: var(--color-accent-bg2);
+  color: var(--color-accent-light);
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-ghost2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+:root, [data-theme="dark"] {
+  --color-bg:             #080806;
+  --color-bg-alt:         #050504;
+  --color-surface:        #0c0b09;
+  --color-surface2:       #100d08;
+  --color-text:           #e8e0d4;
+  --color-text2:          #c8bfaf;
+  --color-muted:          #8a8070;
+  --color-faint:          #6a6058;
+  --color-ghost:          #4a4038;
+  --color-ghost2:         #3a3028;
+  --color-border:         rgba(42,36,32,0.55);
+  --color-border-soft:    rgba(42,36,32,0.3);
+  --color-border-accent:  rgba(212,136,26,0.2);
+  --color-header-bg:      rgba(8,8,6,0.96);
+  --color-accent:         #d4881a;
+  --color-accent-light:   #f0a832;
+  --color-accent-bg:      rgba(212,136,26,0.07);
+  --color-accent-bg2:     rgba(212,136,26,0.13);
+  --color-is-dark:        1;
+}
+
+[data-theme="light"] {
+  --color-bg:             #f7f2e9;
+  --color-bg-alt:         #ede8df;
+  --color-surface:        #ffffff;
+  --color-surface2:       #f0ece4;
+  --color-text:           #1a1510;
+  --color-text2:          #2e2820;
+  --color-muted:          #5a5045;
+  --color-faint:          #7a7060;
+  --color-ghost:          #9a9080;
+  --color-ghost2:         #bab5ad;
+  --color-border:         rgba(120,100,70,0.2);
+  --color-border-soft:    rgba(120,100,70,0.12);
+  --color-border-accent:  rgba(180,110,10,0.25);
+  --color-header-bg:      rgba(247,242,233,0.96);
+  --color-accent:         #b8720e;
+  --color-accent-light:   #d4881a;
+  --color-accent-bg:      rgba(180,110,10,0.07);
+  --color-accent-bg2:     rgba(180,110,10,0.13);
+  --color-is-dark:        0;
+}
